@@ -29,6 +29,14 @@ def SetLumi(lumi, round_lumi=False):
 cmsText = "CMS"
 extraText = "Preliminary"
 
+def SetCMSText(text):
+    global cmsText
+    cmsText = text
+
+def SetExtraText(text):
+    global extraText
+    extraText = text
+
 writeExtraText = True
 
 cmsTextFont = 61  # default is helvetic-bold
