@@ -2,7 +2,7 @@ import os, ROOT
 import numpy as np
 import cmsstyle as CMS
 
-CMS.extraText = "Simulation Preliminary"
+CMS.SetExtraText("Simulation Preliminary")
 
 
 class Plotter:
