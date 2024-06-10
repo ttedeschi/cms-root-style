@@ -28,6 +28,9 @@ def SetLumi(lumi, unit="fb", round_lumi=False):
 cmsText = "CMS"
 extraText = "Preliminary"
 
+def SetCmsText(text):
+    global cmsText
+    extraText = text
 
 def SetExtraText(text):
     global extraText
