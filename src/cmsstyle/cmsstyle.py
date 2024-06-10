@@ -28,6 +28,9 @@ def SetLumi(lumi, unit="fb", round_lumi=False):
 cmsText = "CMS"
 extraText = "Preliminary"
 
+def SetCmsText(text):
+    global cmsText
+    cmsText = text
 
 def SetExtraText(text):
     global extraText
@@ -41,6 +44,14 @@ extraTextFont = 52  # default is helvetica-italics
 additionalInfoFont = 42
 additionalInfo = []  # For extra info
 
+def SetCmsTextFont(font):
+    global cmsTextFont
+    cmsTextFont = font
+
+def SetExtraTextFont(font):
+    global extraTextFont
+    extraTextFont = font
+    
 def ResetAdditionalInfo():
     global additionalInfo
     additionalInfo = []
@@ -54,6 +65,10 @@ lumiTextSize = 0.6
 lumiTextOffset = 0.2
 cmsTextSize = 0.75
 cmsTextOffset = 0.1
+
+def SetCmsTextSize(size):
+    global cmsTextSize
+    cmsTextSize = size
 
 # ratio of 'CMS' and extra text size
 extraOverCmsTextSize = 0.76
