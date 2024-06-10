@@ -29,10 +29,18 @@ cmsText = "CMS"
 extraText = "Preliminary"
 
 def SetCmsText(text):
+    """
+    Function that allows to edit the default
+    "CMS" string
+    """
     global cmsText
     cmsText = text
 
 def SetExtraText(text):
+    """
+    Function that allows to edit the default
+    extra text string (printed after "CMS" by default)
+    """
     global extraText
     extraText = text
 
@@ -45,10 +53,18 @@ additionalInfoFont = 42
 additionalInfo = []  # For extra info
 
 def SetCmsTextFont(font):
+    """
+    Function that allows to edit th default font of the 
+    "CMS" string
+    """
     global cmsTextFont
     cmsTextFont = font
 
 def SetExtraTextFont(font):
+    """
+    Function that allows to edit the default font
+    of extra text string (printed after "CMS" by default)
+    """
     global extraTextFont
     extraTextFont = font
     
@@ -67,6 +83,10 @@ cmsTextSize = 0.75
 cmsTextOffset = 0.1
 
 def SetCmsTextSize(size):
+    """
+    Function that allows to edit th default fontsize of the 
+    "CMS" string
+    """
     global cmsTextSize
     cmsTextSize = size
 
