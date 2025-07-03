@@ -1973,15 +1973,38 @@ class CMSCanvasManager:
 
         leg = rt.TLegend(xleft, ydown, xright, yup)
         leg.SetTextAlign(textalign)
-        leg.SetHeader(title)
+        #leg.SetHeader(title)
+        #leg.SetTextSize(0.20)
+        #header = leg.GetListOfPrimitives().First()
+        
+        #header.SetTextFont(62)      # Bold
+        #header.SetTextSize(0.25)    # Font più grande rispetto al default (~0.035)
+        #header.SetY(header.GetY() + 0.02)  # TRUCCO: alza visivamente il titolo
+        latex = rt.TLatex()
+        latex.SetNDC()
+        latex.SetTextFont(62)
+        latex.SetTextSize(0.025)  # meno ingombrante
+        latex.SetTextAlign(13)    # left-top
+        latex.DrawLatex(0.12, 0.96, "CMS")
+
+#leg.GetListOfPrimitives().First().SetTextFont(62)
         leg.SetBorderSize(1)
+        #leg.SetMargin(0.7)
+        leg.SetMargin(0.5)       # sposta icone + testo a destra nella colonna
+        #leg.SetTextAlign(32)
 
         # Have at most 4 items on the same row
         ndrawables = len(args)
-        leg.SetNColumns(ndrawables if ndrawables < 5 else 4)
+        ncolumns = (ndrawables + 1) if (ndrawables + 1) < 6 else 5
+        leg.SetNColumns(ncolumns)
 
+        n = 0
         for arg in args:
+            if n % ncolumns == 0:
+                leg.AddEntry(0, " ", "  ")
+                n += 1
             leg.AddEntry(arg.obj, arg.name, arg.opt)
+            n += 1
         pad.plot(leg)
 
     def plot_text(
@@ -2160,10 +2183,11 @@ def subplots(
     - canvas_width: total width of the canvas
     - canvas_height: total height of the canvas
     """
-
+    #setCMSStyle()
     top_pad = None
     bottom_pad = None
     canvas = rt.TCanvas("CMS_canvas", "CMS_canvas", canvas_width, canvas_height)
+    #CMS_lumi(canvas, 11, scaleLumi=10)
     with _managed_tpad_context(canvas):
         # Gather the raw coordinates for all the pads
         pads_coords, top_pad_coords, bottom_pad_coords = _subplots_coordinates(
