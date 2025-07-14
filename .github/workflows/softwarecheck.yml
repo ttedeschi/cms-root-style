@@ -42,11 +42,9 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           image: cmscloud/cc7-cms:latest
-          options: --user root
-          context: ./
+          options: --user root -v ${{ github.workspace }}:/code -w /code
           run: |
             python -V
-            ls
-            pwd
+            find . -type f
             python -m py_compile src/cmsstyle/cmsstyle.py
             ls -lh src/cmsstyle/cmsstyle.pyc
