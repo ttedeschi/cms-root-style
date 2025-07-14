@@ -33,19 +33,19 @@ jobs:
 #
   py2-job:
     runs-on: ubuntu-latest
-    container:
-      image: cmscloud/cc7-cms:latest
-      options: --user root
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0  # Opzionale, utile se ti servono i commit passati
 
-      - name: Checking Python 2.7
-        run: |
-          python -V
-          ls
-          pwd
-          python -m py_compile src/cmsstyle/cmsstyle.py
-          ls -lh src/cmsstyle/cmsstyle.pyc
+    steps:
+      - name: Checkout repository (on host)
+        uses: actions/checkout@v4
+
+      - name: Run checks inside container
+        uses: addnab/docker-run-action@v3
+        with:
+          image: cmscloud/cc7-cms:latest
+          options: --user root
+          run: |
+            python -V
+            ls
+            pwd
+            python -m py_compile src/cmsstyle/cmsstyle.py
+            ls -lh src/cmsstyle/cmsstyle.pyc
