@@ -43,6 +43,7 @@ jobs:
         with:
           image: cmscloud/cc7-cms:latest
           options: --user root
+          context: ./
           run: |
             python -V
             ls
