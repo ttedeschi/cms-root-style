@@ -147,7 +147,7 @@ def SetCmsText(text, font=None, size=None):
         cmsTextSize = size
 
 
-def SetCmsLogoFilename(filename: str):
+def SetCmsLogoFilename(filename):
     global useCmsLogo
 
     if len(filename) == 0:
