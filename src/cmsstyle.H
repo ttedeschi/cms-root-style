@@ -29,6 +29,8 @@
 #include <map>
 #include <vector>
 
+#include <math.h>
+
 namespace cmsstyle {
 
 // Some global variables (do not access directly, use the corresponding methods
